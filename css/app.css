@@ -1,0 +1,412 @@
+.margin-bottom {
+  margin: 1em 0 0 1em !important;
+}
+
+.margin-t {
+  margin-top: 1em !important;
+}
+
+.margin-b {
+  margin-bottom: 2em !important;
+}
+
+.padding-b {
+  padding-bottom: 1em !important;
+}
+
+.padding-t {
+  padding-top: 1em !important;
+}
+
+.padding-f {
+  padding-bottom: 1em !important;
+  padding-top: 1em !important;
+  border-radius: 3px;
+}
+
+.float-left {
+  float: left !important;
+}
+
+.fmargin {
+  margin: 10px;
+}
+
+.float-right {
+  float: right !important;
+}
+
+.brand {
+  background: #520894 !important;
+}
+
+.mini-stat-icon {
+  width: 43px !important;
+  height: 44px !important;
+  line-height: 45px !important;
+}
+
+.cdc {
+  margin-left: 40px !important;
+  width: 120px !important;
+  padding-bottom: 107px !important;
+  background-color: grey;
+  height: 120px !important;
+  padding-top: 10 !important;
+  margin-top: -20px !important;
+}
+
+#report-page-wrapper {
+  margin-top: -10px !important;
+}
+
+.cdc-legend {
+  font-size: 10px !important;
+}
+
+.sidebar-toggle-box {
+  background: #32323a !important;
+}
+
+.sidebar-toggle-box .fa-bars {
+  color: white !important;
+}
+
+.theme-submit-btn {
+  background-color: #520894;
+  color: white;
+}
+
+.theme-submit-btn:hover {
+  color: white;
+}
+
+#summery-table th {
+  border: 1px dotted #520794;
+  line-height: 24px;
+  padding-left: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-bottom: 4px;
+}
+
+#summery-table td {
+  border: 1px dotted #520794;
+  line-height: 24px;
+  padding-left: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-bottom: 4px;
+}
+
+small {
+  display: block !important;
+  line-height: 1.428571429 !important;
+  color: #999 !important;
+}
+
+.panel-summary {
+  color: #fff;
+  background-color: #34B132 !important;
+  border-color: #337ab7;
+}
+
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+.login-body {
+  background-color: #f1f2f7 !important;
+}
+
+a.logo {
+  font-size: 21px !important;
+  color: #2e2e2e !important;
+  float: left !important;
+  margin: -22px 0 0 40px !important;
+  text-transform: uppercase;
+}
+
+.form-signin h2.form-signin-heading {
+  border-bottom: 10px solid #400971 !important;
+}
+
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input {
+  margin-bottom: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.account-wall {
+  margin-top: 20px;
+  padding: 40px 0 20px 0;
+  background-color: #f7f7f7;
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.login-title {
+  color: #555;
+  font-size: 18px;
+  font-weight: 400;
+  display: block;
+}
+
+.profile-img {
+  width: 110px;
+  height: auto;
+  margin: 0 auto 10px;
+  display: block;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+.need-help {
+  margin-top: 10px;
+}
+
+.new-account {
+  display: block;
+  margin-top: 10px;
+}
+
+.crepeat {
+  display: inline-block;
+  padding-top: 4px;
+}
+
+@media (min-width: 1200px) {
+  .mol-5 {
+    width: 50.66666667%;
+  }
+
+  .mol-1 {
+    width: 8.33333333%;
+  }
+
+  .mol-2 {
+    width: 13.66666667%;
+  }
+}
+
+.ich {
+  font-size: 50px;
+  padding: 0;
+}
+
+.chead {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+-webkit-scrollbar {
+  width: 16px;
+  background-color: #FFF;
+}
+
+.bttl {
+  font-size: 1.5em;
+}
+
+.tbl select,
+.tbl input {
+  padding: 4px;
+  border: 1px solid #ccc;
+  color: #004A94;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.tbl label {
+  color: #0E253C;
+  font-size: 1.2em;
+  font-weight: normal;
+}
+
+.tbl th {
+  color: #0E253C;
+  font-size: 1.1em;
+  font-weight: normal;
+  background-color: #f7f7f8;
+  border-radius: 6px 6px 0 0;
+  padding: 15px 18px;
+  border-bottom: 1px solid #111;
+}
+
+.tbl td {
+  padding: 10px !important;
+}
+
+.paginate_button {
+  background-color: #79C5FF;
+  border-color: #79C5FF;
+}
+
+.even {
+  background-color: #F7F7F8;
+}
+
+/*********************/
+
+#login,
+#forget {
+  padding: 100px 0;
+}
+
+#login .modal-content,
+#forget .modal-content {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+  border-radius: 0;
+}
+
+#login .modal-body,
+#forget .modal-body {
+  overflow: hidden;
+  padding: 30px 10px 20px;
+}
+
+#login .modal-dialog,
+#forget .modal-dialog {
+  width: 350px;
+}
+
+#login .input-lg,
+#forget .input-lg {
+  height: 36px;
+  padding: 10px 12px;
+  font-size: 18px;
+  border-radius: 0;
+  font-size: 14px;
+}
+
+#login .subBtn,
+#forget .subBtn {
+  border-radius: 0;
+  padding: 7px 15px;
+  width: auto;
+  float: right;
+}
+
+.mde {
+  display: inline-block;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.login {
+  background-size: cover;
+  background-position: top center;
+  background-attachment: fixed;
+}
+
+.relative {
+  position: relative;
+}
+
+#login .form-control-feedback,
+#forget .form-control-feedback {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px !important;
+  text-align: center;
+  pointer-events: none;
+}
+
+.login-box-msg,
+.register-box-msg {
+  margin: 0;
+  text-align: center;
+  padding: 0 20px 20px 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+/***************************/
+
+@media only screen and (max-width: 767px) {
+  #login .modal-dialog,
+  #forget .modal-dialog {
+    margin: 10px auto;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  #login .modal-dialog,
+  #forget .modal-dialog {
+    width: auto;
+  }
+
+  #login,
+  #forget {
+    padding: 40px 0;
+  }
+}
+
+.form-group.has-error input {
+  border-color: #dd4b39 !important;
+}
+
+.d-inline-block {
+  display: inline-block !important;
+}
+
+body.login {
+  background-image: url(/images/login-bg.png?4e1929fa19e62c46c7ff5edff167f9ad);
+  background-size: cover;
+  background-position: top center;
+  background-attachment: fixed;
+}
+
+body.login .wrapper {
+  background-color: transparent;
+}
+
+.sales-graph {
+  background-color: #fff;
+  padding: 30px;
+  margin-top: 40px;
+}
+
+.statistics_table {
+  margin-top: 100px;
+  font-size: 18px;
+}
+
+.statistics_table td {
+  padding: 10px 0px 5px 15px;
+  border-bottom: 1px solid #e4e2e2;
+}
+
+.statistics_table b {
+  color: #777;
+}
+
+@media only screen and (min-width: 1920px) {
+  .bill_saman {
+    width: 160px !important;
+    margin-right: 20px !important;
+  }
+}
+
