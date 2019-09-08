@@ -121,7 +121,7 @@
                        type="text"
                        class="form-control item-input bill_saman hbh"
                        placeholder="Passenger Name"
-                       v-model="product.passenger_name"
+                       v-model="product.name"
                        :name="'passenger_name_' + index"
                        v-validate="'required'">
               </div>
@@ -132,7 +132,7 @@
                        type="text"
                        class="form-control item-input bill_saman hbh required"
                        placeholder="Enter E-Ticket No."
-                       v-model="product.name"
+                       v-model="product.e_ticket"
                        :name="'product_name_' + index"
                        v-validate="'required'">
               </div>
@@ -648,7 +648,7 @@
                            </thead>
                            <tbody>
                               <template v-if="customers">
-                                 <tr v-if="customer.customer_status == 'active'" v-for="(customer, index) in customers" :key="index">
+                                 <tr v-for="(customer, index) in customers" :key="index" v-show="customer.customer_status == 'active'">
                                     <td>{{ customer.name }}</td>
                                     <td class="hidden-xs">{{ customer.address1 }}</td>
                                     <td>{{ customer.phone }}</td>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\AccountCollection;
 use App\Office;
 use App\Model\Banking;
+use App\Model\InvoiceItem;
 use App\Http\Resources\IncomeCollection;
 use App\Http\Resources\ExpenseCollection;
 use App\Model\Utility;
@@ -823,6 +824,7 @@ class OfficeController extends Controller
     public function count_total_dashboard(Request $request)
     {
         # code...
+
         $total_ticket =  DB::select( DB::raw("SELECT  COUNT(id) AS total_ticket FROM invoice_items WHERE type='product'"));;
         $total_customer =  DB::select( DB::raw("SELECT  COUNT(id) AS total_customer FROM customers"));
         $total_service =  DB::select( DB::raw("SELECT  COUNT(id) AS total_service FROM invoice_items WHERE type='service'"));

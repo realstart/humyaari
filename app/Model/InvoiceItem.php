@@ -15,6 +15,6 @@ class InvoiceItem extends Model
         'price',
         'total',
         'carrier',
-        'passenger_name'
+        'e_ticket'
     ];
 }

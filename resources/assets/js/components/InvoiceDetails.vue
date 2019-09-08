@@ -105,10 +105,10 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <tr v-for="(invoice, index) in Description"  :key="index"  v-if="invoice.type == 'product'">
+                        <tr v-for="(invoice, index) in Description"  :key="index"  v-show="invoice.type == 'product'">
                            <td>{{ index +1}}</td>
+                           <td>{{ invoice.e_ticket}}</td>
                            <td>{{ invoice.name}}</td>
-                           <td>{{ invoice.passenger_name}}</td>
                            <td>{{ invoice.pnr}}</td>
                            <td>{{ invoice.carrier}}</td>
                            <td>{{ invoice.route }}</td>
@@ -140,7 +140,7 @@
                         </tr>
                      </thead>
                      <tbody>
-                         <tr v-for="(invoice, index) in Description"  :key="index"  v-if="invoice.type == 'service'" >
+                         <tr v-for="(invoice, index) in Description"  :key="index"  v-show="invoice.type == 'service'" >
                            <td>{{ index +1}}</td>
                            <td>{{ invoice.name}}</td>
                            <td>{{ invoice.quantity}}</td>

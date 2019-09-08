@@ -23,6 +23,8 @@ class CreateInvoiceItemTable extends Migration
             $table->integer('quantity')->unsigned();
             $table->float('price', 10, 2);
             $table->float('total', 10, 2);
+            $table->string('carrier', 10)->nullable();
+            $table->string('e_ticket', 50)->nullable();
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade');;
