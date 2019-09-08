@@ -353,7 +353,7 @@ a.logo {
 }
 
 body.login {
-    background-image: url(../../../public/img/login-bg.png);
+    // background-image: url(../../../public/img/login-bg.png);
     background-size: cover;
     background-position: top center;
     background-attachment: fixed;
@@ -384,7 +384,7 @@ border-bottom:1px solid #e4e2e2;
 
   @media only screen and (min-width: 1920px) {
     .bill_saman{
-    width:160px !important;
-    margin-right:20px !important;
+    width:120px !important;
+    margin-right:10px !important;
     }
   }

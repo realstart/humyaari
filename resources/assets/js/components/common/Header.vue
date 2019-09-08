@@ -5,7 +5,7 @@
     <div class="brand">
 
       <router-link :to="{ name: 'report' }" class="logo">
-       <img style="width: 120px;height:auto"  :src="'/uploads/logo/'+ company.logo" />
+       <img style="width: 120px;height:75px;margin-top:25px;"  :src="'/uploads/logo/logo-white.png'" />
       </router-link>
       <div class="sidebar-toggle-box">
         <div class="fa fa-bars"></div>

@@ -99,10 +99,11 @@
          </a>
         <div class="row bg-light-blue color-palette margin-t padding-f" style="background: #fafafa;">
         <div class="ol-xs-12 col-md-6 col-lg-5 mol-5">
-          <div class="col-md-3">E-Ticket No.</div>
-          <div class="col-md-3">PNR</div>
-          <div class="col-md-3">CARRIER</div>
-          <div class="col-md-3">Route</div>
+          <div class="col-md-3">Passenger Name</div>
+          <div class="col-md-2">E-Ticket No.</div>
+          <div class="col-md-2">PNR</div>
+          <div class="col-md-2">CARRIER</div>
+          <div class="col-md-2">Route</div>
         </div>
         <div class="col-xs-12 col-md-2 col-lg-1 mol-1">QTY</div>
         <div class="col-xs-12 col-md-2 col-lg-2 mol-2">UNIT PRICE</div>
@@ -115,8 +116,19 @@
         <article v-for="(product, index) in products" :key="index" class="mr6 margin-b">
           <div class="col-xs-12 col-md-6 col-lg-5 mol-5">
             <div class="col-md-3">
+              <div class="input-group d-inline-block" :class="{'has-error': formErrors.has('product_passenger_name_' + index) }">
+                <input style="width:100%;margin-right:10px"
+                       type="text"
+                       class="form-control item-input bill_saman hbh"
+                       placeholder="Passenger Name"
+                       v-model="product.passenger_name"
+                       :name="'passenger_name_' + index"
+                       v-validate="'required'">
+              </div>
+            </div>
+            <div class="col-md-2">
               <div class="input-group d-inline-block" :class="{'has-error': formErrors.has('product_name_' + index) }">
-                <input style="width:110px;margin-right:10px"
+                <input style="width:100%;margin-right:10px"
                        type="text"
                        class="form-control item-input bill_saman hbh required"
                        placeholder="Enter E-Ticket No."
@@ -125,9 +137,9 @@
                        v-validate="'required'">
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="input-group d-inline-block" :class="{'has-error': formErrors.has('product_pnr_' + index) }">
-                <input style="width:100px;margin-right:10px"
+                <input style="width:100%;margin-right:10px"
                        type="text"
                        class="form-control item-input bill_saman hbh"
                        placeholder="Enter PNR"
@@ -136,9 +148,9 @@
                        v-validate="'required'">
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="input-group d-inline-block" :class="{'has-error': formErrors.has('carrier' + index) }">
-                <input style="width:120px;margin-left: -8px;"
+                <input style="width:100%;margin-left: -8px;"
                        type="text"
                        class="form-control item-input bill_saman hbh"
                        placeholder="Enter Carrier"
@@ -146,9 +158,9 @@
                        :name="'carrier' + index">
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="input-group d-inline-block" :class="{'has-error': formErrors.has('product_route_' + index) }">
-                <input style="width:120px;margin-right:10px"
+                <input style="width:100%;margin-right:10px"
                        type="text"
                        class="form-control item-input bill_saman hbh"
                        placeholder="Enter Route"
@@ -158,17 +170,7 @@
               </div>
             </div>
             <br>
-            <div class="col-md-4">
-              <div class="input-group d-inline-block" :class="{'has-error': formErrors.has('product_passenger_name_' + index) }">
-                <input style="width:220px;margin-right:10px"
-                       type="text"
-                       class="form-control item-input bill_saman hbh"
-                       placeholder="Passanger Name"
-                       v-model="product.passenger_name"
-                       :name="'passenger_name_' + index"
-                       v-validate="'required'">
-              </div>
-            </div>
+            
           </div>
 
           <div class="col-xs-12 col-md-6 col-lg-1 mol-1" :class="{'has-error': formErrors.has('product_qty_' + index) }">

@@ -157,7 +157,7 @@
                               <li><span class="bar-legend-pointer yellow-b"></span> Third Party</li>
                            </ul>
                            <div class="daily-sales-info">
-                              <span class="sales-count" v-if="totalSalesAll <= 0">0</span> <span v-else> {{ totalSalesAll }}</span> </span> <span class="sales-label">Daily sales</span>
+                              <span class="sales-count" v-if="totalSalesAll <= 0">0</span> <span v-else> {{ totalSalesAll }}</span> <span class="sales-label">Daily sales</span>
                            </div>
                         </div>
                      </div>
@@ -273,7 +273,7 @@
          <div class="row">
             <div class="col-md-3">
                <div class="mini-stat clearfix">
-                  <span class="mini-stat-icon orange"><i class="fa fa-gavel"></i></span>
+                  <span class="mini-stat-icon"><img style="width:50px;" src="/img/icon/Tickets.png" alt=""></span>
                   <div class="mini-stat-info">
                      <span v-if="totalTicket <= 0">0</span>
                      <span v-else>{{ totalTicket}}</span>
@@ -283,7 +283,7 @@
             </div>
             <div class="col-md-3">
                <div class="mini-stat clearfix">
-                  <span class="mini-stat-icon tar"><i class="fa fa-tag"></i></span>
+                  <span class="mini-stat-icon"><img style="width:50px;" src="/img/icon/Services.png" alt=""></span>
                   <div class="mini-stat-info">
                      <span v-if="totalService <= 0">0</span>
                      <span v-else>{{ totalService}}</span>
@@ -293,7 +293,7 @@
             </div>
             <div class="col-md-3">
                <div class="mini-stat clearfix">
-                  <span class="mini-stat-icon pink"><i class="fa fa-money"></i></span>
+                  <span class="mini-stat-icon"><img style="width:50px;" src="/img/icon/Profits.png" alt=""></span>
                   <div class="mini-stat-info">
                      <span v-if="totalProfit <= 0">0</span>
                      <span v-else>{{ Number((totalProfit).toFixed(2)) }}</span>
@@ -303,7 +303,7 @@
             </div>
             <div class="col-md-3">
                <div class="mini-stat clearfix">
-                  <span class="mini-stat-icon green"><i class="fa fa-eye"></i></span>
+                  <span class="mini-stat-icon green"><img style="width:50px;" src="/img/icon/Customers.png" alt=""></span>
                   <div class="mini-stat-info">
                      <span v-if="totalCustomer <= 0">0</span>
                      <span v-else>{{ totalCustomer}}</span>

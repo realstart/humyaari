@@ -698,39 +698,33 @@ class OfficeController extends Controller
 
         ];
         $updateOrders = Company::find($id)->update($CompanyData);
+
+        return response()->json([
+            'data' => $updateOrders
+        ]);
+    }
+
+    public function update_company_logo(Request $request) {
+        $file = $request->file('company_logo');
+        $id = $request->post('id');
+
+        $filename =  "logo_new". '.' . $file->getClientOriginalExtension();
+
+        $directoryName = base_path("uploads/logo/");
         
-            $file = $request->file('company_logo');
+        if (!file_exists($directoryName)) {
+            mkdir($directoryName);
+        }
 
-            //$destinationPath = public_path('logo');
+        $file->move($directoryName, $filename);
 
-           // $filepath        = $destinationPath.'/'.$path;
-
-            $filename =  "logo_new". '.' . $file->getClientOriginalExtension();
-
-            // return response()->json([
-            //     'data' => $destinationPath.'/'.$filename
-            // ]);
-            $directoryName = public_path("uploads/logo/");
+        $LogoData = [
             
-            if (!file_exists($directoryName)) {
-                mkdir($directoryName);
-            }
-
-            $file->move($directoryName, $filename);
-
-            // Storage::disk('local')->putFileAs('logo/', $file, $filename);
-
-            // $file->company_logo = $filename;
-
-            $LogoData = [
-                
-                'company_logo' => $filename
-            ];
-           // $updateOrder->save();
-           
-           $updateOrders = Company::find($id)->update($LogoData);
-
+            'company_logo' => $filename
+        ];
        
+        $updateOrders = Company::find($id)->update($LogoData);
+   
         return response()->json([
             'data' => $updateOrders
         ]);

@@ -219,6 +219,8 @@ Route::middleware(['jwt'])->group(function () {
     //Updates API
     Route::post('/api/v1/update-company-info','OfficeController@update_company_info');
 
+    Route::post('/api/v1/update-company-logo','OfficeController@update_company_logo');
+
     Route::post('/api/v1/update-client-info','CustomerController@update_customer_info');
 
     Route::post('/api/v1/update-vendor-info','VendorController@update_vendor_info');
