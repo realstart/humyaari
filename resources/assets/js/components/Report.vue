@@ -53,7 +53,7 @@
                   <span class="mini-stat-icon"><img style="width:50px;" src="/img/icon/Tickets.png" alt=""></span>
                   <div class="mini-stat-info">
                      <span>{{ totalTicket}}</span>
-                     Total Ticket Sale
+                     Total Ticket Sale ooooooooooooooooooooooo
                   </div>
                </div>
             </div>
