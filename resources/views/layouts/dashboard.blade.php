@@ -32,8 +32,7 @@
   <!-- App -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-  <style>
-   
+  <style>   
       .edit-modal .v--modal-box .v--modal{
          top: 38px;
          height: 300px;
