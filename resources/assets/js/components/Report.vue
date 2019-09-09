@@ -15,7 +15,6 @@
                               :size="100" unit="px" :thickness="30"
                               has-legend legend-placement="right"
                               :sections="sections" :total="100"
-                              @section-click="handleSectionClick"
                               ></vc-donut>
                         </div>
                      </div>
@@ -52,8 +51,46 @@
                <div class="mini-stat clearfix">
                   <span class="mini-stat-icon"><img style="width:50px;" src="/img/icon/Tickets.png" alt=""></span>
                   <div class="mini-stat-info">
+                     <span>{{ totalTicket + totalService }}</span>
+                     <b>Total Sale</b> 
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-3">
+               <div class="mini-stat clearfix">
+                  <span class="mini-stat-icon"><img style="width:50px;" src="/img/icon/Services.png" alt=""></span>
+                  <div class="mini-stat-info">
+                     <span>{{ totalSaleMonth }}</span>
+                     <b>Sales This Month</b> 
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-3">
+               <div class="mini-stat clearfix">
+                  <span class="mini-stat-icon"><img style="width:50px;" src="/img/icon/Profits.png" alt=""></span>
+                  <div class="mini-stat-info">
+                     <span>{{ totalDue }}</span>
+                     <b>Total Due</b> 
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-3">
+               <div class="mini-stat clearfix">
+                  <span class="mini-stat-icon green"><img style="width:50px;" src="/img/icon/Customers.png" alt=""></span>
+                  <div class="mini-stat-info">
+                     <span>{{ totalCustomer}}</span>
+                     <b>Payment Received</b>
+                  </div>
+               </div>
+            </div>
+         </div>
+        <div class="row">
+            <div class="col-md-3">
+               <div class="mini-stat clearfix">
+                  <span class="mini-stat-icon"><img style="width:50px;" src="/img/icon/Tickets.png" alt=""></span>
+                  <div class="mini-stat-info">
                      <span>{{ totalTicket}}</span>
-                     Total Ticket Sale ooooooooooooooooooooooo
+                     Total Ticket Sale
                   </div>
                </div>
             </div>
@@ -70,7 +107,7 @@
                <div class="mini-stat clearfix">
                   <span class="mini-stat-icon"><img style="width:50px;" src="/img/icon/Profits.png" alt=""></span>
                   <div class="mini-stat-info">
-                     <span>{{ Number((totalProfit).toFixed(2)) }}</span>
+                     <span>{{ Number((totalProfit)).toFixed(2) }}</span>
                      Total Profit
                   </div>
                </div>
@@ -85,6 +122,7 @@
                </div>
             </div>
          </div>
+
          <div class="row">
             <div class="col-md-6">
                <!--notification start-->
@@ -172,7 +210,7 @@
                                         <li><a  target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no ">Download</a></li>
                                         <li><a  href="javascript:;" title="Delete" v-on:click="DeleteInvoice(invoice.invoice_no)">Delete</a> </li>
                                     </ul>
-                                    </div>
+                                </div>
                            </td>
                         </tr>
                         <tr v-show="!invoices.length">
@@ -214,6 +252,8 @@
          totalCustomer: 0,
          totalService: 0,
          totalProfit: 0,
+         totalSaleMonth: 0,
+         totalDue: 0,
          invoices: [],
          totalGDSSale:[],
          totalServiceSale:[],
@@ -396,7 +436,8 @@
                 this.totalCustomer = response.data.total_customer[0].total_customer;
                 this.totalService = response.data.total_service[0].total_service;
                 this.totalProfit = response.data.total_profit[0].total_profit;
-           
+                this.totalSaleMonth = response.data.total_sale_month;
+                this.totalDue = response.data.total_due;
                 console.log(this.totalTicket);
             })
            .catch(e => {

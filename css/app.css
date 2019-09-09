@@ -373,6 +373,7 @@ a.logo {
 }
 
 body.login {
+  background-image: url(/img/login-bg.png);
   background-size: cover;
   background-position: top center;
   background-attachment: fixed;

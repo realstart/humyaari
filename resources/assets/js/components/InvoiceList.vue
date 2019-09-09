@@ -83,13 +83,18 @@
                                  <span v-if="invoice.status == 'due'" class="label label-danger" style="font-size:14px;text-transform:uppercase"> {{ invoice.status }}</span>
                                  <span v-if="invoice.status == 'partial'" class="label label-warning" style="font-size:14px;text-transform:uppercase"> {{ invoice.status }}</span>
                               </td>
-                              <td>
-                                 <!-- <a class="btn btn-success" title="View Invoice" href="#" v-on:click="ViewInvoice(invoice.invoice_no)"><i class="fa fa-file"></i> View</a> -->
-                                 <router-link :to="{ name: 'InvoiceDetails', params: { id: invoice.invoice_no } }" class="btn btn-success">View</router-link>
-                                 <a class="btn btn-warning" target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no + '/print' + token">Print Customer Copy</a>
-                                 <a class="btn btn-danger" target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no + '/office' + token">Print Office Copy</a>
-                                 <a class="btn btn-primary" target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no + token">Download</a>
-                                 <a v-if="user.role == 'admin'" href="#" class="btn btn-danger" title="Delete" v-on:click="DeleteInvoice(invoice.invoice_no)"><i class="fa fa-trash-o"></i></a>
+                              <td> 
+                                 <div class="dropdown">
+                                    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Options
+                                    <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li> <router-link :to="{ name: 'InvoiceDetails', params: { id: invoice.invoice_no } }">View</router-link></li>
+                                        <li><a target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no + '/print' + token">Print Customer Copy</a></li>
+                                        <li><a target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no + '/office' + token">Print Office Copy</a></li>
+                                        <li><a target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no + token">Download</a></li>
+                                        <li><a v-if="user.role == 'admin'" href="#" title="Delete" v-on:click="DeleteInvoice(invoice.invoice_no)">Delete</a></li>
+                                    </ul>
+                                 </div>
                               </td>
                            </tr>
                            <tr v-show="!invoices.length">
@@ -199,7 +204,7 @@
                            </tr>
                         </thead>
                         <tbody>
-                           <tr v-for="(invoice, index) in Description"  :key="index"  v-if="invoice.type == 'product'">
+                           <tr v-for="(invoice, index) in Description"  :key="index"  v-show="invoice.type == 'product'">
                               <td>{{ index +1}}</td>
                               <td>{{ invoice.name}}</td>
                               <td>{{ invoice.pnr}}</td>
@@ -232,7 +237,7 @@
                            </tr>
                         </thead>
                         <tbody>
-                           <tr v-for="(invoice, index) in Description"  :key="index"  v-if="invoice.type == 'service'" >
+                           <tr v-for="(invoice, index) in Description"  :key="index"  v-show="invoice.type == 'service'" >
                               <td>{{ index +1}}</td>
                               <td>{{ invoice.name}}</td>
                               <td>{{ invoice.quantity}}</td>

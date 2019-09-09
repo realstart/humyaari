@@ -98,9 +98,9 @@
          <strong>Add Product</strong>
          </a>
         <div class="row bg-light-blue color-palette margin-t padding-f" style="background: #fafafa;">
-        <div class="ol-xs-12 col-md-6 col-lg-5 mol-5">
+        <div class="ol-xs-12 col-md-6 col-lg-7">
           <div class="col-md-3">Passenger Name</div>
-          <div class="col-md-2">E-Ticket No.</div>
+          <div class="col-md-3">E-Ticket No.</div>
           <div class="col-md-2">PNR</div>
           <div class="col-md-2">CARRIER</div>
           <div class="col-md-2">Route</div>
@@ -114,7 +114,7 @@
       <div class="row panel panel-default" id="saman_list" style="padding-bottom: 10px;">
         <br>
         <article v-for="(product, index) in products" :key="index" class="mr6 margin-b">
-          <div class="col-xs-12 col-md-6 col-lg-5 mol-5">
+          <div class="col-xs-12 col-md-6 col-lg-7">
             <div class="col-md-3">
               <div class="input-group d-inline-block" :class="{'has-error': formErrors.has('product_passenger_name_' + index) }">
                 <input style="width:100%;margin-right:10px"
@@ -126,7 +126,7 @@
                        v-validate="'required'">
               </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
               <div class="input-group d-inline-block" :class="{'has-error': formErrors.has('product_name_' + index) }">
                 <input style="width:100%;margin-right:10px"
                        type="text"
@@ -173,7 +173,7 @@
             
           </div>
 
-          <div class="col-xs-12 col-md-6 col-lg-1 mol-1" :class="{'has-error': formErrors.has('product_qty_' + index) }">
+          <div class="col-xs-12 col-md-6 col-lg-1" :class="{'has-error': formErrors.has('product_qty_' + index) }">
             <input
               type="number"
               class="form-control saman_qty jod required"
@@ -184,7 +184,7 @@
             >
           </div>
 
-          <div class="col-xs-12 col-md-6 col-lg-2 mol-2">
+          <div class="col-xs-12 col-md-6 col-lg-1">
             <div class="input-group" :class="{'has-error': formErrors.has('product_price_' + index) }">
               <span class="input-group-addon currenty">BDT</span>
 
@@ -200,7 +200,7 @@
             </div>
           </div>
 
-          <div class="col-xs-12 col-md-6 col-lg-2 mol-2" style="display:none">
+          <div class="col-xs-12 col-md-6 col-lg-2" style="display:none">
             <input
               type="number"
               class="form-control pdtax jod"
@@ -211,7 +211,7 @@
             <input type="hidden" class="form-control jod" name="saman-tax[]" placeholder="TAX" value>
           </div>
 
-          <div class="col-xs-12 col-md-6 col-lg-2 mol-2">
+          <div class="col-xs-12 col-md-6 col-lg-2">
             <div class="input-group">
               <span class="input-group-addon">BDT</span>
 
@@ -221,7 +221,7 @@
             </div>
           </div>
 
-          <div class="col-xs-12 col-md-6 col-lg-2 mol-2">
+          <div class="col-xs-12 col-md-6 col-lg-1">
             <input type="hidden" class="bill_pid" id="bill_pid[]" name="bill_pid[]" value="0">
 
             <span v-on:click="removeProduct(index)" class="input-group-addon" style="width:20px;border:1px solid #d2d6de">
@@ -239,114 +239,7 @@
         </article>
       </div>
       <br>
-         <!-- <a v-on:click.prevent="addService()" href="#" class="btn btn-warning btn-xs add-service-row">
-            <span class="icon-plus"></span>
-            <strong>Add Service</strong>
-            </a> -->
-         <!-- <div class="row bg-light-blue color-palette margin-t padding-f">
-            <div class="ol-xs-12 col-md-6 col-lg-5 mol-5">
-              <div class="col-md-12">Service Name</div>
-            </div>
-            
-            <div class="col-xs-12 col-md-2 col-lg-1 mol-1">QTY</div>
-            
-            <div class="col-xs-12 col-md-2 col-lg-2 mol-2">UNIT PRICE</div>
-            
-            
-            <div class="col-xs-12 col-md-2 col-lg-2 mol-2" style="border-right:0">SUBTOTAL</div>
-            </div>
-            
-            <div class="row panel panel-default" id="service_list">
-            <br>
-            <article v-for="(service, index) in services" :key="index" class="mr6 margin-b">
-              <div class="col-xs-12 col-md-6 col-lg-5 mol-5">
-                <div class="input-group" :class="{'has-error': formErrors.has('service_name_' + index) }">
-                  <span class="input-group-addon" style="display: none">
-                    <a href="#" class="btn btn-success btn-xs product-select">
-                      <span class="icon-database" title="Select Product From List"></span>List
-                    </a>
-                  </span>
-                  <input
-                    style="width:140px;margin-right:10px"
-                    type="text"
-                    class="form-control item-input bill_saman hbh required"
-                    id="bill_saman[]"
-                    placeholder="Enter Service Name"
-                    v-model="service.name"
-                    :name="'service_name_' + index"
-                    v-validate="'required'"
-                  >
-            
-                  <input
-                    type="hidden"
-                    class="bill_service_pid"
-                    id="bill_service_pid[]"
-                    name="bill_service_pid[]"
-                    value="0"
-                  >
-            
-                  <span
-                    v-on:click="removeService(index)"
-                    class="input-group-addon"
-                    style="width:20px;border:1px solid #d2d6de"
-                  >
-                    <a href="#" class="btn btn-danger btn-xs delete-row" title="Delete Product row">
-                      <span class="icon-cancel-circle"></span>
-                    </a>
-                  </span>
-                </div>
-              </div>
-            
-              <div class="col-xs-12 col-md-6 col-lg-1 mol-1">
-                <div
-                  class="input-group"
-                  :class="{'has-error': formErrors.has('service_quantity_' + index) }"
-                >
-                  <input
-                    type="number"
-                    class="form-control saman_qty jod-service required"
-                    v-model="service.quantity"
-                    :name="'service_quantity_' + index"
-                    v-validate="'required'"
-                  >
-                </div>
-              </div>
-            
-              <div class="col-xs-12 col-md-6 col-lg-2 mol-2">
-                <div
-                  class="input-group"
-                  :class="{'has-error': formErrors.has('service_price_' + index) }"
-                >
-                  <span class="input-group-addon currenty">BDT</span>
-            
-                  <input
-                    type="number"
-                    class="form-control jod-service billsaman_price required"
-                    placeholder="0.00"
-                    v-model="service.price"
-                    :name="'service_price_' + index"
-                    v-validate="'required'"
-                  >
-                </div>
-              </div>
-            
-              <div class="col-xs-12 col-md-6 col-lg-2 mol-2">
-                <div class="input-group">
-                  <span class="input-group-addon">BDT</span>
-            
-                  <span class="form-control jod-service-sub">{{ service.quantity * service.price }}</span>
-            
-                  <input type="hidden" class="ttInput" name="total[]" id="total-0" value="0">
-                </div>
-            
-                <div class="clear"></div>
-              </div>
-            
-              <br>
-              <br>
-            </article>
-            </div> -->
-         <!-- Price Break Down -->
+                  
          <div class="row margin-t">
             <div class="col-md-6">
                <section class="panel">

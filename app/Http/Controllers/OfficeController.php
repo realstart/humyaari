@@ -825,18 +825,19 @@ class OfficeController extends Controller
     {
         # code...
 
-        $total_ticket =  DB::select( DB::raw("SELECT  COUNT(id) AS total_ticket FROM invoice_items WHERE type='product'"));;
+        $total_ticket =  DB::select( DB::raw("SELECT  COUNT(id) AS total_ticket FROM invoice_items WHERE type='product'"));
         $total_customer =  DB::select( DB::raw("SELECT  COUNT(id) AS total_customer FROM customers"));
         $total_service =  DB::select( DB::raw("SELECT  COUNT(id) AS total_service FROM invoice_items WHERE type='service'"));
         $total_profit =  DB::select( DB::raw("SELECT SUM(profit) AS total_profit FROM invoices"));
-
-        return response()->json([
-           
+        $total_sale_month = DB::table('invoice_items')->whereMonth('created_at', date('m'))->count();
+        $total_due = DB::table('invoices')->where('status','due')->count();
+        return response()->json([           
             'total_ticket' => $total_ticket,
             'total_customer' => $total_customer,
             'total_service' => $total_service,
             'total_profit' => $total_profit,
-            
+            'total_sale_month' => $total_sale_month,
+            'total_due' => $total_due,
         ]);
     }
 
