@@ -99,11 +99,11 @@
                      New Income Details
                   </header>
                   <div class="panel-body">
-                     <div class="position-center">
+                     <div class="position-center normal-border">
                         <form @submit.prevent="submit">
                            <div class="form-group" data-date-format="yyyy/mm/dd">
-                              <label for="income_date">Date</label>
-                              <div class="input-group date mdate">
+                              <label for="income_date" class="control-label col-lg-4">Date</label>
+                              <div class="col-lg-8 date mdate m-b-20">                                 
                                  <input type="text"
                                     class="form-control"
                                     name="income_date"
@@ -114,33 +114,43 @@
                                     autocomplete="off"
                                     v-on:focusout="setDate('income_date', fields, 'income_date')"
                                     required>
-                                 <span class="input-group-addon"><span class="icon-calendar"></span></span>
                               </div>
                               <div v-if="errors && errors.income_date" class="text-danger">{{ errors.income_date[0] }}</div>
                            </div>
-                           <div class="form-group">
-                              <label for="tr_ac">Account</label>
-                              <select name="transaction_account" class="form-control" id="transaction_account" v-model="fields.transaction_account" required>
+                           <div class="form-group ">
+                              <label for="tr_ac" class="control-label col-lg-4">Account</label>
+                              <div class="col-lg-8 m-b-20">                                 
+                                 <select name="transaction_account" class="form-control" id="transaction_account" v-model="fields.transaction_account" required>
                                  <option value=" " disabled> --- Select type ---</option>
                                  <option
                                     v-for="vendor in account_numbers"
                                     :key="vendor.id"
                                     :value="vendor.ac_no"
                                     >{{ vendor.ac_no }}</option>
-                              </select>
+                                 </select>
+                              </div>
                               <div v-if="errors && errors.transaction_account" class="text-danger">{{ errors.transaction_account[0] }}</div>
                            </div>
-                           <div class="form-group">
-                              <label for="income_amount">Amount</label>
-                              <input type="income_amount" class="form-control" name="income_amount" id="income_amount" v-model="fields.income_amount"  required/>
+                           
+                           <div class="form-group ">
+                              <label for="income_amount" class="control-label col-lg-4">Amount</label>
+                              <div class="col-lg-8 m-b-20">                                 
+                                 <input type="income_amount" class="form-control" name="income_amount" id="income_amount" v-model="fields.income_amount"  required/>
+                              </div>
                               <div v-if="errors && errors.income_amount" class="text-danger">{{ errors.income_amount[0] }}</div>
                            </div>
-                           <div class="form-group">
-                              <label for="income_note">Note</label>
-                              <input type="text" class="form-control" name="income_note" id="income_note" v-model="fields.income_note" />
+                           
+                           <div class="form-group ">
+                              <label for="income_amount" class="control-label col-lg-4">Note</label>
+                              <div class="col-lg-8 m-b-20">                                
+                                 <input type="text" class="form-control" name="income_note" id="income_note" v-model="fields.income_note" />
+                              </div>
                               <div v-if="errors && errors.income_note" class="text-danger">{{ errors.income_note[0] }}</div>
                            </div>
-                           <button type="submit" class="btn btn-round btn btn-info">Submit</button>
+                           <div class="form-group text-center">
+                              <button type="submit" class="btn btn_submit">Submit</button>
+                           </div>
+                           
                            <div v-if="success" class="alert alert-success mt-6" id="success-box">
                               Data Insertd Successfully
                            </div>

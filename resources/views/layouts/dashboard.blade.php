@@ -30,7 +30,7 @@
   <!-- Bucket styles end -->
 
   <!-- App -->
-  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
 
   <style>   
       .edit-modal .v--modal-box .v--modal{

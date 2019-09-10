@@ -98,12 +98,12 @@
                   New Expense Details
                </header>
                <div class="panel-body">
-                  <div class="position-center">
+                  <div class="position-center normal-border">
                      <form @submit.prevent="submit">
-                        <div class="form-group" data-date-format="yyyy/mm/dd">
-                           <label for="expense_date">Date</label>
-                           <!-- <input type="date" class="form-control" name="income_date" id="income_date" v-model="fields.income_date" /> -->
-                           <div class="input-group date mdate">
+                        
+                        <div class="form-group ">
+                           <label for="expense_date" class="control-label col-lg-4">Date</label>
+                           <div class="col-lg-8 date mdate m-b-20">                                 
                               <input type="text"
                                  class="form-control"
                                  name="expense_date"
@@ -114,33 +114,45 @@
                                  autocomplete="off"
                                  v-on:focusout="setDate('expense_date', fields, 'expense_date')"
                                  required>
-                              <span class="input-group-addon"><span class="icon-calendar"></span></span>
                            </div>
                            <div v-if="errors && errors.expense_date" class="text-danger">{{ errors.expense_date[0] }}</div>
                         </div>
-                        <div class="form-group">
-                           <label for="tr_ac">Account</label>
-                           <select name="transaction_account" class="form-control" id="transaction_account" v-model="fields.transaction_account" required>
-                              <option value=" " disabled> --- Select type ---</option>
-                              <option
-                                 v-for="vendor in account_numbers"
-                                 :key="vendor.id"
-                                 :value="vendor.ac_no"
-                                 >{{ vendor.ac_no }}</option>
-                           </select>
+
+                        <div class="form-group ">
+                           <label for="tr_ac" class="control-label col-lg-4">Account</label>
+                           <div class="col-lg-8 m-b-20">                                 
+                              <select name="transaction_account" class="form-control" id="transaction_account" v-model="fields.transaction_account" required>
+                                 <option value=" " disabled> --- Select type ---</option>
+                                 <option
+                                    v-for="vendor in account_numbers"
+                                    :key="vendor.id"
+                                    :value="vendor.ac_no"
+                                    >{{ vendor.ac_no }}</option>
+                              </select>
+                           </div>
                            <div v-if="errors && errors.transaction_account" class="text-danger">{{ errors.transaction_account[0] }}</div>
                         </div>
-                        <div class="form-group">
-                           <label for="expense_amount">Amount</label>
-                           <input type="number" class="form-control" name="expense_amount" id="expense_amount" v-model="fields.expense_amount" required />
+                        
+                        <div class="form-group ">
+                           <label for="expense_amount" class="control-label col-lg-4">Amount</label>
+                           <div class="col-lg-8 m-b-20">                                 
+                             <input type="number" class="form-control" name="expense_amount" id="expense_amount" v-model="fields.expense_amount" required />
+                           </div>
                            <div v-if="errors && errors.expense_amount" class="text-danger">{{ errors.expense_amount[0] }}</div>
                         </div>
+                        
                         <div class="form-group">
-                           <label for="expense_note">Note</label>
-                           <input type="text" class="form-control" name="expense_note" id="expense_note" v-model="fields.expense_note" />
+                           <label for="expense_note" class="control-label col-lg-4">Note</label>
+                           <div class="col-lg-8 m-b-20">                                 
+                             <input type="text" class="form-control" name="expense_note" id="expense_note" v-model="fields.expense_note" />
+                           </div>
                            <div v-if="errors && errors.expense_note" class="text-danger">{{ errors.expense_note[0] }}</div>
                         </div>
-                        <button type="submit" class="btn btn-round btn btn-info">Submit</button>
+
+                        <div class="form-group text-center">
+                           <button type="submit" class="btn btn_submit">Submit</button>
+                        </div>
+                        
                         <div v-if="success" class="alert alert-success mt-6" id="success-box">
                            Data Insertd Successfully
                         </div>
