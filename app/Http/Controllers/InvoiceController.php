@@ -107,7 +107,6 @@ class InvoiceController extends Controller
     }
     public function makePDF(Request $request) {
 
-
         $data = $this->getInvoiceData($request);
 
         $invoice  = $data['invoice'];
@@ -130,10 +129,7 @@ class InvoiceController extends Controller
             'company' => $company,
             'admin' => $admin_name
         );
-
        
-      
-
         if ($request->print === 'office') {
             $data['official'] = true;
         }
@@ -142,6 +138,7 @@ class InvoiceController extends Controller
         $dompdf->set_option('defaultFont', 'Arial');
 		$dompdf->loadHtml(View::make('invoice.customer', $data));
 		$dompdf->setPaper('A4', 'portrait');
+        // return view('invoice.customer');
         $dompdf->render();
 
         $filename = $invoice->invoice_no . '.pdf';

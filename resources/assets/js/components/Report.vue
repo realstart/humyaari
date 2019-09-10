@@ -15,6 +15,7 @@
                               :size="100" unit="px" :thickness="30"
                               has-legend legend-placement="right"
                               :sections="sections" :total="100"
+                              :start-angle="0"
                               ></vc-donut>
                         </div>
                      </div>
@@ -208,7 +209,9 @@
                                         <li><a target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no + '/print'">Print Customer Copy</a></li>
                                         <li><a  target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no + '/office'">Print Office Copy</a></li>
                                         <li><a  target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no ">Download</a></li>
-                                        <li><a  href="javascript:;" title="Delete" v-on:click="DeleteInvoice(invoice.invoice_no)">Delete</a> </li>
+                                        <li>
+                                            <a v-if="user.role == 'admin'" href="#" title="Delete" v-on:click="DeleteInvoice(invoice.invoice_no)">Delete</a>
+                                        </li>
                                     </ul>
                                 </div>
                            </td>
@@ -234,76 +237,74 @@
      name: "report",
      extends: Line,
      data() {
-       return {
-         chart: null,
-         labelSalesDate: [],
-         TotalIncomes: [],
-         TotalExpenses: [],
-         TotalDue: [],
-         TotalSale: [],
-         TotalSevenDaysSale: [],
-         TotalSevenDaysDue: [],
-         TotalSevenDaysIncome: [],
-         TotalSevenDaysExpense: [],
-         TotalSevenDaysDeposit: [],
-         TotalSevenDaysWithdraw: [],
-         TotalSevenDaysTransfer: [],
-         totalTicket: 0,
-         totalCustomer: 0,
-         totalService: 0,
-         totalProfit: 0,
-         totalSaleMonth: 0,
-         totalDue: 0,
-         invoices: [],
-         totalGDSSale:[],
-         totalServiceSale:[],
-         totalThirdPartySale:[],
-         totalSalesAll:[],
-   
-         MonthlyGDSSale:[],
-         MonthlyServiceSale:[],
-         MonthlyThirdPartySale:[],
-         MonthlySalesAll:[],
-   
-   
-         PercentageGDS:null,
-         PercentageService:null,
-         PercentageThirdParty:null,
-   
-         PercentageGDSMonthly:null,
-         PercentageServiceMonthly:null,
-         PercentageThirdPartyMonthly:null,
-         userLog: [],
-          success: null,
-          company: {
-   
-                   name:'',
-                   address : '',
-                   address2 : '',
-                   phone1: '',
-                   phone2: '',
-                   email : '',
-                   id : ''
+        return {
+            chart: null,
+            labelSalesDate: [],
+            TotalIncomes: [],
+            TotalExpenses: [],
+            TotalDue: [],
+            TotalSale: [],
+            TotalSevenDaysSale: [],
+            TotalSevenDaysDue: [],
+            TotalSevenDaysIncome: [],
+            TotalSevenDaysExpense: [],
+            TotalSevenDaysDeposit: [],
+            TotalSevenDaysWithdraw: [],
+            TotalSevenDaysTransfer: [],
+            totalTicket: 0,
+            totalCustomer: 0,
+            totalService: 0,
+            totalProfit: 0,
+            totalSaleMonth: 0,
+            totalDue: 0,
+            invoices: [],
+            totalGDSSale:[],
+            totalServiceSale:[],
+            totalThirdPartySale:[],
+            totalSalesAll:[],
+
+            MonthlyGDSSale:[],
+            MonthlyServiceSale:[],
+            MonthlyThirdPartySale:[],
+            MonthlySalesAll:[],
+
+
+            PercentageGDS:null,
+            PercentageService:null,
+            PercentageThirdParty:null,
+
+            PercentageGDSMonthly:null,
+            PercentageServiceMonthly:null,
+            PercentageThirdPartyMonthly:null,
+            userLog: [],
+            user: JSON.parse(localStorage.getItem('user')),
+            success: null,
+            company: {
+                name:'',
+                address : '',
+                address2 : '',
+                phone1: '',
+                phone2: '',
+                email : '',
+                id : ''
             },
             fields: {
-   
-               inv_id:''
+                inv_id:''
             },
-             loadSuccessMessage: '',
+            loadSuccessMessage: '',
             errors: {},
-         isLoading: true,
-         PartialPayment: '',
-          loaded: true,
-           account_numbers:[],
-          curuser: JSON.parse(localStorage.getItem('user')),
-           invoiceTypeService : false,
-           invoiceTypeProduct : false,
+            isLoading: true,
+            PartialPayment: '',
+            loaded: true,
+            account_numbers:[],
+            curuser: JSON.parse(localStorage.getItem('user')),
+            invoiceTypeService : false,
+            invoiceTypeProduct : false,
             sections: [
-               { label: 'GDS', value: null }, 
-               { label: 'Service', value: null}, 
-               { label: 'Third Party', value: null}
+                { label: 'GDS', value: 0, color: 'red' }, 
+                { label: 'Service', value: 0, color: 'green'}, 
+                { label: 'Third Party', value: 0, color: 'blue'}
             ]
-           
        };
      },
    
@@ -313,7 +314,7 @@
        this.renderSevenDaysSalesReport();
       //  this.renderSevenDaysIncomeReport();
       //  this.renderSevenDaysExpenseReport();
-       this.renderSevenDaysDepositReport();
+      //  this.renderSevenDaysDepositReport();
        this.renderInvoice();
        this.renderUserLog();
        this.CompanyInfo();
@@ -446,6 +447,29 @@
            });
         },
 
+       DeleteInvoice(id){
+          var x = confirm("Are you sure you want to delete?");
+            if (x){
+               this.$Progress.start()
+               axios.put('/api/v1/soft-delete-invoice/'+id) 
+               .then(response => {
+                  //alert("Deleted Successfully");
+                   location.href="/";
+                     this.$Progress.finish()
+               })
+               .catch(e => {
+      
+                  console.log(e)
+                     this.$Progress.fail()
+               })
+               }     
+            else{
+   
+             return false;
+            }
+               
+       },
+
         TotalSalesForOneDay() {
           this.success = false;
          axios
@@ -551,7 +575,8 @@
             axios
             .get("/api/v1/invoice-list")
             .then(response => {
-                this.invoices = response.data.data;                
+                this.invoices = response.data.data;
+                console.log(this.invoices)
             })
             .catch(e => {
                 console.log(e);

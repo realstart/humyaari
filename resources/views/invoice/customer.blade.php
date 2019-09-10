@@ -4,8 +4,12 @@
       <meta charset="utf-8">
       <title>Invoice</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+      <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> -->
       <style>
+      @font-face {
+         font-family: 'Poppins-Regular';
+         src: url({{ storage_path('fonts\Poppins-Regular.ttf') }}) format("truetype");         
+      }
          * {
          margin: 0;
          }
@@ -17,7 +21,7 @@
          height: 842pt;
          }
          body {
-         font-family: 'Roboto', sans-serif;
+         font-family: 'Poppins-Regular', sans-serif;
          background: #fff;
          background-image: none;
          font-size: 13px;

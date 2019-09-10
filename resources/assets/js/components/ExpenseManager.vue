@@ -267,7 +267,7 @@
        },
        Accouts(){
    
-          axios.post('/api/v1/all-account-holder-list/') 
+          axios.post('/api/v1/all-account-holder-list') 
                .then(response => {
       
                   console.log(response.data.data)
