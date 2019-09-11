@@ -824,13 +824,13 @@ class OfficeController extends Controller
     public function count_total_dashboard(Request $request)
     {
         # code...
-
         $total_ticket =  DB::select( DB::raw("SELECT  COUNT(id) AS total_ticket FROM invoice_items WHERE type='product'"));
         $total_customer =  DB::select( DB::raw("SELECT  COUNT(id) AS total_customer FROM customers"));
         $total_service =  DB::select( DB::raw("SELECT  COUNT(id) AS total_service FROM invoice_items WHERE type='service'"));
         $total_profit =  DB::select( DB::raw("SELECT SUM(profit) AS total_profit FROM invoices"));
         $total_sale_month = DB::table('invoice_items')->whereMonth('created_at', date('m'))->count();
         $total_due = DB::table('invoices')->where('status','due')->count();
+        $total_paid = DB::table('invoices')->where('status','paid')->count();
         return response()->json([           
             'total_ticket' => $total_ticket,
             'total_customer' => $total_customer,
@@ -838,6 +838,7 @@ class OfficeController extends Controller
             'total_profit' => $total_profit,
             'total_sale_month' => $total_sale_month,
             'total_due' => $total_due,
+            'total_paid' => $total_paid,
         ]);
     }
 

@@ -180,7 +180,7 @@
        return {
          
          incomes: [],
-          account_numbers:[],
+         account_numbers:[],
          query:'',
          AddNew: null,
          queryField: 'income_amount',
@@ -216,7 +216,7 @@
        loadUsers(){
    
          this.$Progress.start()
-        axios.get('/api/v1/income-list?page='+this.pagination.current_page) 
+         axios.get('/api/v1/income-list?page='+this.pagination.current_page) 
              .then(response => {
    
                  //console.log(response)

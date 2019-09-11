@@ -79,7 +79,7 @@
                <div class="mini-stat clearfix">
                   <span class="mini-stat-icon green"><img style="width:50px;" src="/img/icon/Customers.png" alt=""></span>
                   <div class="mini-stat-info">
-                     <span>{{ totalCustomer}}</span>
+                     <span>{{ totalPaid}}</span>
                      <b>Payment Received</b>
                   </div>
                </div>
@@ -257,6 +257,7 @@
             totalProfit: 0,
             totalSaleMonth: 0,
             totalDue: 0,
+            totalPaid: 0,
             invoices: [],
             totalGDSSale:[],
             totalServiceSale:[],
@@ -439,6 +440,7 @@
                 this.totalProfit = response.data.total_profit[0].total_profit;
                 this.totalSaleMonth = response.data.total_sale_month;
                 this.totalDue = response.data.total_due;
+                this.totalPaid = response.data.total_paid;
                 console.log(this.totalTicket);
             })
            .catch(e => {
