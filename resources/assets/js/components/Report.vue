@@ -207,8 +207,8 @@
                                     <ul class="dropdown-menu">
                                         <li> <router-link :to="{ name: 'InvoiceDetails', params: { id: invoice.invoice_no } }">View</router-link></li>
                                         <li><a target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no + '/print'">Print Customer Copy</a></li>
-                                        <li><a  target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no + '/office'">Print Office Copy</a></li>
-                                        <li><a  target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no ">Download</a></li>
+                                        <li><a target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no + '/office'">Print Office Copy</a></li>
+                                        <li><a target="_blank" :href="'/api/v1/makepdf/' + invoice.invoice_no ">Download</a></li>
                                         <li>
                                             <a v-if="user.role == 'admin'" href="#" title="Delete" v-on:click="DeleteInvoice(invoice.invoice_no)">Delete</a>
                                         </li>

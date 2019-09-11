@@ -411,11 +411,11 @@
             </tr>
             <tr>
                @if($invoice->status =='paid')
-               <td><img src="images/paid.png" alt="" style="height:auto;width:150px;"></td>
+               <td><img src="{{ asset('images/paid.png') }}" alt="" style="height:auto;width:150px;"></td>
                @elseif($invoice->status =='due')
-               <td><img src="images/due.png" alt="" style="height:auto;width:150px;"></td>
+               <td><img src="{{ asset('images/due.png') }}" alt="" style="height:auto;width:150px;"></td>
                @elseif($invoice->status == 'partial')
-               <td><img src="images/partial.png" alt="" style="auto:100px;width:150px;"></td>
+               <td><img src="{{ asset('images/partial.png') }}" alt="" style="auto:100px;width:150px;"></td>
                @endif
             </tr>
          </table>
@@ -425,6 +425,7 @@
 
             </tr>
          </div>
+         
       </div>
    </body>
 </html>

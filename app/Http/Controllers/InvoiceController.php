@@ -10,6 +10,7 @@ use App\Model\InvoiceItem;
 use App\Model\Customer;
 use App\Model\Vendor;
 use Dompdf\Dompdf;
+use PDF;
 use DB;
 use App\Http\Resources\InvoiceCollection;
 use App\Http\Resources\InvoiceResource;
@@ -106,6 +107,15 @@ class InvoiceController extends Controller
         
     }
     public function makePDF(Request $request) {
+        // $data = ['title' => 'Welcome to HDTuto.com'];
+        // $pdf = PDF::loadView('myPDF', $data);
+        // return $pdf->download('hdtuto.pdf');
+
+        
+        
+        // $data = ['title' => 'Welcome to HDTuto.com'];
+        // $pdf = PDF::loadHTML('myPDFsdgdfgdfg', $data);
+        // return $pdf->stream();
 
         $data = $this->getInvoiceData($request);
 
@@ -134,12 +144,16 @@ class InvoiceController extends Controller
             $data['official'] = true;
         }
 
-        $dompdf = new Dompdf();
-        $dompdf->set_option('defaultFont', 'Arial');
-		$dompdf->loadHtml(View::make('invoice.customer', $data));
-		$dompdf->setPaper('A4', 'portrait');
-        // return view('invoice.customer');
-        $dompdf->render();
+//         $dompdf = new Dompdf();
+//         $dompdf->set_option('defaultFont', 'Arial');
+// 		$dompdf->loadHtml(View::make('invoice.customer', $data));
+// 		$dompdf->setPaper('A4', 'portrait');
+        
+//         $dompdf->render();
+
+        //$data = ['title' => 'Welcome to HDTuto.com'];
+        $pdf = PDF::loadHTML(View::make('invoice.customer', $data));
+        return $pdf->stream();
 
         $filename = $invoice->invoice_no . '.pdf';
 
